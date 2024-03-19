@@ -618,3 +618,4 @@ void loadRecordEmployee(NonAcademic*& head) {
         cout << "Unable to open file of the records" << endl;
     }
 }
+
