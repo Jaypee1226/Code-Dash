@@ -217,11 +217,11 @@ void viewSpecificRecord(const Student* head) {
     }
     inFile.close();
 
-    if (!found)
+    if (!found) 
         cout << "Record not found!" << endl;
-    cin.ignore();
-    system("cls");
+
 }
+
 
 void viewAllRecord(const Student* head) {
     ifstream inFile("students.txt");
@@ -395,9 +395,8 @@ void viewSpecificRecordTeacher(const Teacher* head) {
 
     if (!found)
         cout << "Record not found!" << endl;
-    cin.ignore();
-    system("cls");
 }
+
 
 void viewAllRecordTeacher(const Teacher* head) {
     ifstream inFile("teachers.txt");
@@ -572,8 +571,7 @@ void viewSpecificRecordEmployee(const NonAcademic* head) {
 
     if (!found)
         cout << "Record not found!" << endl;
-    cin.ignore();
-    system("cls");
+    
 }
 
 void viewAllRecordEmployee(const NonAcademic* head) {
