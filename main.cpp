@@ -186,46 +186,66 @@ void addRecord(Student*& head) {
 }
 
 void viewSpecificRecord(const Student* head) {
+    ifstream inFile("students.txt");
+    if (!inFile) {
+        cout << "Unable to open file of the records" << endl;
+        return;
+    }
+
     int searchId;
-    const Student* current = head;
     cout << "Input the Student's Student Number : ";
     cin >> searchId;
 
-    while (current != NULL) {
-        if (current->studentNumber == searchId) {
+    int studentNumber;
+    string fullName, gender, birthday, address, degree;
+    int year;
+    bool found = false;
+
+    while (inFile >> studentNumber >> fullName >> gender >> birthday >> address >> degree >> year) {
+        if (studentNumber == searchId) {
             cout << "Record Found" << endl;
-            cout << "Student Number : " << current->studentNumber << endl;
-            cout << "Full Name : " << current->fullName << endl;
-            cout << "Gender : " << current->gender << endl;
-            cout << "Birthday : " << current->birthday << endl;
-            cout << "Address : " << current->address << endl;
-            cout << "Degree/Program : " << current->degree << endl;
-            cout << "Year Level : " << current->year << endl;
-            cin.ignore();
-            system("cls");
-            return;
+            cout << "Student Number : " << studentNumber << endl;
+            cout << "Full Name : " << fullName << endl;
+            cout << "Gender : " << gender << endl;
+            cout << "Birthday : " << birthday << endl;
+            cout << "Address : " << address << endl;
+            cout << "Degree/Program : " << degree << endl;
+            cout << "Year Level : " << year << endl;
+            found = true;
+            break;
         }
-        current = current->next;
     }
-    cout << "Record not found!" << endl;
+    inFile.close();
+
+    if (!found)
+        cout << "Record not found!" << endl;
     cin.ignore();
     system("cls");
 }
 
 void viewAllRecord(const Student* head) {
-    const Student* current = head;
-    cout << "ALL RECORDS" << endl;
-    while (current != NULL) {
-        cout << "Record Found" << endl;
-        cout << "Student Number : " << current->studentNumber << endl;
-        cout << "Full Name : " << current->fullName << endl;
-        cout << "Gender : " << current->gender << endl;
-        cout << "Birthday : " << current->birthday << endl;
-        cout << "Address : " << current->address << endl;
-        cout << "Degree/Program : " << current->degree << endl;
-        cout << "Year Level : " << current->year << endl;
-        cout << endl;
-        current = current->next;
+    ifstream inFile("students.txt");
+    if (inFile.is_open()) {
+        int studentNumber;
+        string fullName, gender, birthday, address, degree;
+        int year;
+
+        cout << "ALL RECORDS" << endl;
+        while (inFile >> studentNumber >> fullName >> gender >> birthday >> address >> degree >> year) {
+            cout << "Record Found" << endl;
+            cout << "Student Number : " << studentNumber << endl;
+            cout << "Full Name : " << fullName << endl;
+            cout << "Gender : " << gender << endl;
+            cout << "Birthday : " << birthday << endl;
+            cout << "Address : " << address << endl;
+            cout << "Degree/Program : " << degree << endl;
+            cout << "Year Level : " << year << endl;
+            cout << endl;
+        }
+        inFile.close();
+    }
+    else {
+        cout << "Unable to open file of the records" << endl;
     }
     cin.ignore();
     system("cls");
@@ -342,46 +362,66 @@ void addRecordTeacher(Teacher*& head) {
 }
 
 void viewSpecificRecordTeacher(const Teacher* head) {
+    ifstream inFile("teachers.txt");
+    if (!inFile) {
+        cout << "Unable to open file of the records" << endl;
+        return;
+    }
+
     int searchTeacherId;
-    const Teacher* current = head;
     cout << "Input the Teacher's Number : ";
     cin >> searchTeacherId;
 
-    while (current != NULL) {
-        if (current->teacherNumber == searchTeacherId) {
+    int teacherNumber;
+    string tFullName, tGender, tBirthday, tAddress, tDegree;
+    int tYear;
+    bool found = false;
+
+    while (inFile >> teacherNumber >> tFullName >> tGender >> tBirthday >> tAddress >> tDegree >> tYear) {
+        if (teacherNumber == searchTeacherId) {
             cout << "Record Found" << endl;
-            cout << "Teacher Number : " << current->teacherNumber << endl;
-            cout << "Full Name : " << current->tFullName << endl;
-            cout << "Gender : " << current->tGender << endl;
-            cout << "Birthday : " << current->tBirthday << endl;
-            cout << "Address : " << current->tAddress << endl;
-            cout << "Degree/Program : " << current->tDegree << endl;
-            cout << "Number of Years in Service : " << current->tYear << endl;
-            cin.ignore();
-            system("cls");
-            return;
+            cout << "Teacher Number : " << teacherNumber << endl;
+            cout << "Full Name : " << tFullName << endl;
+            cout << "Gender : " << tGender << endl;
+            cout << "Birthday : " << tBirthday << endl;
+            cout << "Address : " << tAddress << endl;
+            cout << "Degree/Program : " << tDegree << endl;
+            cout << "Number of Years in Service : " << tYear << endl;
+            found = true;
+            break;
         }
-        current = current->next;
     }
-    cout << "Record not found!" << endl;
+    inFile.close();
+
+    if (!found)
+        cout << "Record not found!" << endl;
     cin.ignore();
     system("cls");
 }
 
 void viewAllRecordTeacher(const Teacher* head) {
-    const Teacher* current = head;
-    cout << "ALL RECORDS" << endl;
-    while (current != NULL) {
-        cout << "Record Found" << endl;
-        cout << "Teacher Number : " << current->teacherNumber << endl;
-        cout << "Full Name : " << current->tFullName << endl;
-        cout << "Gender : " << current->tGender << endl;
-        cout << "Birthday : " << current->tBirthday << endl;
-        cout << "Address : " << current->tAddress << endl;
-        cout << "Degree/Program : " << current->tDegree << endl;
-        cout << "Number of Years in Service : " << current->tYear << endl;
-        cout << endl;
-        current = current->next;
+    ifstream inFile("teachers.txt");
+    if (inFile.is_open()) {
+        int teacherNumber;
+        string tFullName, tGender, tBirthday, tAddress, tDegree;
+        int tYear;
+
+        cout << "ALL RECORDS" << endl;
+        while (inFile >> teacherNumber >> tFullName >> tGender >> tBirthday >> tAddress >> tDegree >> tYear) {
+            cout << "Record Found" << endl;
+            cout << "Teacher Number : " << teacherNumber << endl;
+            cout << "Full Name : " << tFullName << endl;
+            cout << "Gender : " << tGender << endl;
+            cout << "Birthday : " << tBirthday << endl;
+            cout << "Address : " << tAddress << endl;
+            cout << "Degree/Program : " << tDegree << endl;
+            cout << "Number of Years in Service : " << tYear << endl;
+            cout << endl;
+        }
+        inFile.close();
+    }
+    else {
+        cout << "Unable to open file of the records" << endl;
     }
     cin.ignore();
     system("cls");
@@ -499,46 +539,66 @@ void addRecordEmployee(NonAcademic*& head) {
 }
 
 void viewSpecificRecordEmployee(const NonAcademic* head) {
+    ifstream inFile("employees.txt");
+    if (!inFile) {
+        cout << "Unable to open file of the records" << endl;
+        return;
+    }
+
     int searchEmployeeId;
-    const NonAcademic* current = head;
     cout << "Input the Employee's Number : ";
     cin >> searchEmployeeId;
 
-    while (current != NULL) {
-        if (current->employeeNumber == searchEmployeeId) {
+    int employeeNumber;
+    string eFullName, eGender, eBirthday, eAddress, department;
+    int eYear;
+    bool found = false;
+
+    while (inFile >> employeeNumber >> eFullName >> eGender >> eBirthday >> eAddress >> department >> eYear) {
+        if (employeeNumber == searchEmployeeId) {
             cout << "Record Found" << endl;
-            cout << "Employee Number : " << current->employeeNumber << endl;
-            cout << "Full Name : " << current->eFullName << endl;
-            cout << "Gender : " << current->eGender << endl;
-            cout << "Birthday : " << current->eBirthday << endl;
-            cout << "Address : " << current->eAddress << endl;
-            cout << "Department : " << current->department << endl;
-            cout << "Number of Years in Service : " << current->eYear << endl;
-            cin.ignore();
-            system("cls");
-            return;
+            cout << "Employee Number : " << employeeNumber << endl;
+            cout << "Full Name : " << eFullName << endl;
+            cout << "Gender : " << eGender << endl;
+            cout << "Birthday : " << eBirthday << endl;
+            cout << "Address : " << eAddress << endl;
+            cout << "Department : " << department << endl;
+            cout << "Number of Years in Service : " << eYear << endl;
+            found = true;
+            break;
         }
-        current = current->next;
     }
-    cout << "Record not found!" << endl;
+    inFile.close();
+
+    if (!found)
+        cout << "Record not found!" << endl;
     cin.ignore();
     system("cls");
 }
 
 void viewAllRecordEmployee(const NonAcademic* head) {
-    const NonAcademic* current = head;
-    cout << "ALL RECORDS" << endl;
-    while (current != NULL) {
-        cout << "Record Found" << endl;
-        cout << "Employee Number : " << current->employeeNumber << endl;
-        cout << "Full Name : " << current->eFullName << endl;
-        cout << "Gender : " << current->eGender << endl;
-        cout << "Birthday : " << current->eBirthday << endl;
-        cout << "Address : " << current->eAddress << endl;
-        cout << "Department : " << current->department << endl;
-        cout << "Number of Years in Service : " << current->eYear << endl;
-        cout << endl;
-        current = current->next;
+    ifstream inFile("employees.txt");
+    if (inFile.is_open()) {
+        int employeeNumber;
+        string eFullName, eGender, eBirthday, eAddress, department;
+        int eYear;
+
+        cout << "ALL RECORDS" << endl;
+        while (inFile >> employeeNumber >> eFullName >> eGender >> eBirthday >> eAddress >> department >> eYear) {
+            cout << "Record Found" << endl;
+            cout << "Employee Number : " << employeeNumber << endl;
+            cout << "Full Name : " << eFullName << endl;
+            cout << "Gender : " << eGender << endl;
+            cout << "Birthday : " << eBirthday << endl;
+            cout << "Address : " << eAddress << endl;
+            cout << "Department : " << department << endl;
+            cout << "Number of Years in Service : " << eYear << endl;
+            cout << endl;
+        }
+        inFile.close();
+    }
+    else {
+        cout << "Unable to open file of the records" << endl;
     }
     cin.ignore();
     system("cls");
@@ -618,4 +678,3 @@ void loadRecordEmployee(NonAcademic*& head) {
         cout << "Unable to open file of the records" << endl;
     }
 }
-
